@@ -10,7 +10,7 @@ class Permission extends Model
 {
     protected $guarded=[];
 
-     protected $casts = [
+    protected $casts = [
         'name' => 'array',
     ];
 
