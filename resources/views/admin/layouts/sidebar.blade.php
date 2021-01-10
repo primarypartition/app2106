@@ -39,22 +39,32 @@
 
     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
-                > Role
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-            ></a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                Role
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+
             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                <nav class="sb-sidenav-menu-nested nav">        @if(isset(auth()->user()->role->permission['name']['role']['can-add']))
-                    <a class="nav-link" href="{{route('roles.create')}}">Create Role</a>
-            @endif
-                    @if(isset(auth()->user()->role->permission['name']['role']['can-list']))
-                    <a class="nav-link" href="{{route('roles.index')}}">View Role</a>
-                @endif</nav>
+                <nav class="sb-sidenav-menu-nested nav">
+                @if(isset(auth()->user()->role->permission['name']['role']['can-add']))
+                    <a class="nav-link" href="{{route('roles.create')}}">
+                        Create Role
+                    </a>
+                @endif
+
+                @if(isset(auth()->user()->role->permission['name']['role']['can-list']))
+                    <a class="nav-link" href="{{route('roles.index')}}">
+                        View Role
+                    </a>
+                @endif
+                </nav>
             </div>
-            <a class="nav-link collapsed" href="{{route('roles.index')}}" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
-                >User
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-            ></a>
+
+            <a class="nav-link collapsed" href="{{route('roles.index')}}" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                User
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+
             <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
                     @if(isset(auth()->user()->role->permission['name']['user']['can-list']))
@@ -65,13 +75,12 @@
                         <a class="nav-link" href="{{route('users.create')}}">Create User</a>
                     @endif
                 </nav>
+            </div>
 
-                                    </div>
-
-                                    <a class="nav-link collapsed" href="{{route('roles.index')}}" data-toggle="collapse" data-target="#pagesCollapsePermission" aria-expanded="false" aria-controls="pagesCollapsePermission"
-                                        >Permission
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
+            <a class="nav-link collapsed" href="{{route('roles.index')}}" data-toggle="collapse" data-target="#pagesCollapsePermission" aria-expanded="false" aria-controls="pagesCollapsePermission"
+                >Permission
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+            ></a>
                                     <div class="collapse" id="pagesCollapsePermission" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
         @if(isset(auth()->user()->role->permission['name']['permission']['can-list']))

@@ -3,13 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+
+use App\Models\User;
+
 class Leave extends Model
 {
 	protected $guarded=[];
 
-	public function user(){
+    /**
+     *
+     */
+    public function user()
+    {
 		return $this->belongsTo(User::class);
 	}
-
 }

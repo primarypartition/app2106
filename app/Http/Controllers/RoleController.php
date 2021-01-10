@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Role;
+
+use App\Models\Role;
+
 class RoleController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin.role.index',compact('roles'));
+
+        return view('admin.role.index', compact('roles'));
     }
 
     /**
@@ -35,11 +38,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name'=>'required|unique:roles'
         ]);
+
         Role::create($request->all());
-        return redirect()->back()->with('message','Role created Successfully');
+
+        return redirect()->back()->with('message', 'Role created Successfully');
     }
 
     /**
@@ -62,7 +67,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        return view('admin.role.edit',compact('role'));
+
+        return view('admin.role.edit', compact('role'));
     }
 
     /**
@@ -77,13 +83,11 @@ class RoleController extends Controller
         $this->validate($request,[
             'name'=>'required|unique:roles,name,'.$id
         ]);
+
         $role = Role::find($id);
         $role->update($request->all());
-        return redirect()->route('roles.index')->with('message','Role updated Successfully');
- 
-   
-    
-      
+
+        return redirect()->route('roles.index')->with('message', 'Role updated Successfully');
     }
 
     /**
@@ -95,6 +99,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         Role::find($id)->delete();
-        return redirect()->route('roles.index')->with('message','Role deleted Successfully');
+
+        return redirect()->route('roles.index')->with('message', 'Role deleted Successfully');
     }
 }
