@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>['auth', 'has.permission']], function(){
@@ -22,5 +24,3 @@ Route::get('/mail','MailController@create')->name('mails.create');
 Route::post('/mail','MailController@store')->name('mails.store');
 
 });
-
-Auth::routes();
