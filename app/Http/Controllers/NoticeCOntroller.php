@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Notice;
+
+use App\Models\Notice;
+
 class NoticeCOntroller extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class NoticeCOntroller extends Controller
     public function index()
     {
        $notices = Notice::latest()->get();
-       return view('admin.notice.index',compact('notices'));
+
+       return view('admin.notice.index', compact('notices'));
     }
 
     /**
@@ -41,8 +44,10 @@ class NoticeCOntroller extends Controller
             'date'=>'required',
             'name'=>'required'
         ]);
+
         Notice::create($request->all());
-        return redirect()->route('notices.index')->with('message','Notice created Successfully');
+
+        return redirect()->route('notices.index')->with('message', 'Notice created Successfully');
     }
 
     /**
@@ -65,7 +70,8 @@ class NoticeCOntroller extends Controller
     public function edit($id)
     {
         $notice = Notice::find($id);
-        return view('admin.notice.edit',compact('notice'));
+
+        return view('admin.notice.edit', compact('notice'));
     }
 
     /**
@@ -79,7 +85,8 @@ class NoticeCOntroller extends Controller
     {
         $notice = Notice::find($id);
         $notice->update($request->all());
-        return redirect()->route('notices.index')->with('message','Notice updated Successfully');
+
+        return redirect()->route('notices.index')->with('message', 'Notice updated Successfully');
     }
 
     /**
@@ -91,6 +98,7 @@ class NoticeCOntroller extends Controller
     public function destroy($id)
     {
         Notice::find($id)->delete();
-        return redirect()->route('notices.index')->with('message','Notice deleted Successfully');
+
+        return redirect()->route('notices.index')->with('message', 'Notice deleted Successfully');
     }
 }

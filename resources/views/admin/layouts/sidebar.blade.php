@@ -138,7 +138,7 @@
 
             @if(isset(auth()->user()->role->permission['name']['notice']['can-add']))
                 <a class="nav-link" href="{{route('notices.create')}}">
-                    Create leave
+                    Create Notice
                 </a>
             @endif
         </nav>

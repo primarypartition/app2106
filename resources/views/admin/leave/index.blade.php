@@ -62,7 +62,7 @@
                                         </select>
                                         </div>
                                         <div class="form-group">
-                                        <label>Status</label>
+                                        <label>Message</label>
                                         <textarea name="message" class="form-control" required=""></textarea>
                                     </div>
                                     </div>
